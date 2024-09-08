@@ -12,7 +12,7 @@ export default function AboutSection() {
                 </p>
             </div>
             <div className="">
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 sm:gap-4 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
                     <FeatureCard
                         icon={<Calendar className="h-8 w-8 text-indigo-600" />}
                         title="Effortless Scheduling"

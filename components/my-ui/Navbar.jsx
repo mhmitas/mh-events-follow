@@ -9,14 +9,15 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 import { ModeToggle } from "../ModeToggle"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 
 export default function Navbar() {
 
     const navItems = [
         { name: "Home", href: "/" },
+        { name: "Events", href: "/events" },
         { name: "Blogs", href: "/blogs" },
         { name: "About", href: "/about" },
         { name: "Contact", href: "/contact" }
@@ -50,17 +51,25 @@ export default function Navbar() {
                             <ModeToggle />
                         </div>
                     </div>
-                    <div className="hidden md:block">
-                        <Avatar className="cursor-pointer">
-                            <AvatarImage src="https://i.ibb.co/tJ8827Y/unnamed.png" alt="@mitas" />
-                            <AvatarFallback>CN</AvatarFallback>
-                        </Avatar>
+                    <div className="hidden md:flex items-center gap-4">
+                        <SignedIn>
+                            <UserButton afterSwitchSessionUrl="/" />
+                        </SignedIn>
+                        <SignedOut>
+                            <Button asChild>
+                                <Link href="sign-in">Sign In</Link>
+                            </Button>
+                        </SignedOut>
                     </div>
                     <div className="md:hidden flex items-center gap-1">
-                        <Avatar>
-                            <AvatarImage src="https://i.ibb.co/tJ8827Y/unnamed.png" alt="@mitas" />
-                            <AvatarFallback>CN</AvatarFallback>
-                        </Avatar>
+                        <SignedIn>
+                            <UserButton afterSwitchSessionUrl="/" />
+                        </SignedIn>
+                        <SignedOut>
+                            <Button asChild>
+                                <Link href="sign-in">Sign In</Link>
+                            </Button>
+                        </SignedOut>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button variant="ghost" size="icon">

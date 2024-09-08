@@ -1,9 +1,9 @@
 'use client'
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 const images = [
     "https://i.ibb.co.com/0Y1tmwY/1.jpg",
@@ -11,7 +11,7 @@ const images = [
     "https://i.ibb.co.com/JC5JdLM/3.jpg",
 ]
 
-export default function Component() {
+export default function Hero() {
     const [currentImage, setCurrentImage] = useState(0)
 
     useEffect(() => {
@@ -33,28 +33,18 @@ export default function Component() {
         <section className="w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center sm:px-6 lg:px-8 py-12 lg:py-24 xl:py-28 mb-20">
             <div className="my-container w-full">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="flex-1 text-center lg:text-left space-y-6"
-                    >
+                    <div className="flex-1 text-center lg:text-left space-y-6">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight text-white">
                             Create Unforgettable Events
                         </h1>
                         <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 max-w-2xl mx-auto lg:mx-0 text-white">
                             Plan, manage, and execute stunning events with ease using our powerful platform.
                         </p>
-                        <Button size="lg">
-                            Get Started
+                        <Button size="lg" asChild>
+                            <Link href="/events">Get Started</Link>
                         </Button>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="flex-1 w-full max-w-xl lg:max-w-none relative"
-                    >
+                    </div>
+                    <div className="flex-1 w-full max-w-xl lg:max-w-none relative">
                         <div className="relative aspect-video overflow-hidden rounded-lg shadow-xl">
                             {images.map((src, index) => (
                                 <Image
@@ -85,7 +75,7 @@ export default function Component() {
                                 </Button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
