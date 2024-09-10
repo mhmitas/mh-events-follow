@@ -35,13 +35,13 @@ export default function Navbar() {
                         </Link>
                     </div>
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-4">
+                        <div className="ml-10 flex items-center space-x-6">
                             {navItems.map(item => (
                                 <Link
                                     key={item.name}
                                     href={item.href}
                                     className={cn(
-                                        "px-1 mx-2 py-1 text-sm font-medium transition-colors border-b-2 border-transparent hover:border-blue-600 rounded-none",
+                                        "py-1 text-sm font-medium transition-colors border-b-2 border-transparent hover:border-blue-600 rounded-none",
                                         pathname === item.href && "border-b-2 border-blue-600" // You can change 'blue-500' to any color you prefer
                                     )}
                                 >
